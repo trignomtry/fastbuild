@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: Release Packaging
+name: Release
 
 jobs:
   release:
@@ -25,3 +25,11 @@ jobs:
         with:
           name: ${{ env.PROJECT_NAME_UNDERSCORE }}
           path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
+
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
+        with:
+            files: |
+              target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
