@@ -1,0 +1,6 @@
+type = "rust"
+build = ["cargo build --release"]
+[commands]
+install = ["cargo install --path ."]
+release = ["cargo install --path ."]
+debug = ["echo Hellow World"]
